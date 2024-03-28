@@ -1,7 +1,14 @@
+import "./All.css";
+import sadlion from "../assets/404-lion.gif"
+
 function NotFound(){
     return(
         <>
-            <h1>Page in progress</h1>        
+            <div className="Error">
+                <h1>404 NOT FOUND !!</h1>
+                <img src={sadlion} alt="gif" />
+
+            </div>
         </>
     )
 }

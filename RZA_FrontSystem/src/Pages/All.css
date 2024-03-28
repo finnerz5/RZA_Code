@@ -1,0 +1,22 @@
+/* #E3D80B ( Main colour ) */
+
+.amatic-sc-bold {
+    font-family: "Amatic SC", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+
+
+.Error{
+    text-align: center;
+    padding-top: 3%;
+}
+
+.page-footer{
+    background-image: url("../assets/Page-footer.png");
+    align-items: center;
+    background-size: cover;
+    height: 50vh;
+}
+

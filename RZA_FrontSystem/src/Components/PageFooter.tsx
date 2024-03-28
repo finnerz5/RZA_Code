@@ -1,8 +1,10 @@
-const Footer = (): JSX.Element => <footer className="page-footer font-small blue pt-4 bg-dark text-light mt-5">
+import "../Pages/All.css"
+
+const Footer = (): JSX.Element => <footer className="page-footer font-small blue pt-4 bg-white text-dark mt-5">
     <div className="container-fluid text-center text-md-left">
         <div className="row">
             <div className="col-md-6 mt-md-0 mt-3">
-                <h5 className="text-uppercase">A Brew For You</h5>
+                <h5 className="text-uppercase font-large">Riget Zoo Adventures</h5>
             </div>
 
             <hr className="clearfix w-100 d-md-none pb-0"/>
@@ -10,9 +12,9 @@ const Footer = (): JSX.Element => <footer className="page-footer font-small blue
             <div className="col-md-3 mb-md-0 mb-3">
                 <h5 className="text-uppercase">Links</h5>
                 <ul className="list-unstyled">
-                    <li><a href="/Social">Social Media</a></li>
-                    <li><a href="/Contact">Contact</a></li>
-                    <li><a href="/Account">Account</a></li>
+                    <li><a href="/social">Social Media</a></li>
+                    <li><a href="/help">Contact</a></li>
+                    <li><a href="/account">Account</a></li>
                 </ul>
             </div>
         </div>

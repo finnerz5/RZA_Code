@@ -14,10 +14,12 @@ import Education from './Pages/Education'
 import Loyal from './Pages/Membership'
 import Hotel from './Pages/Hotel'
 
+
 function App() {
 
   return (
     <>
+    
       <Routes>
         <Route path="/" element={<PageLayout/>}>
             <Route path={INDEX_PATH} element={<Homepage />} />

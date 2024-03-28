@@ -1,0 +1,33 @@
+/* Default height for small devices */
+#header-img {
+    height: 800px;
+  }
+  
+  /* Height for devices larger than 992px */
+  @media (min-width: 992px) {
+    #head-img {
+      height: 900px;
+    }
+  }
+
+  .body{
+    text-align: center;
+  }
+
+  .para1{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .boxesCSS {
+    text-align: center;
+    border-radius: 25px;
+    width: 30%;
+    color: #212529;
+    background-color: #E3D80B;
+    color: aliceblue;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+  }
