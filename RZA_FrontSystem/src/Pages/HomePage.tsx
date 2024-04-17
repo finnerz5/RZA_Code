@@ -1,9 +1,10 @@
-import { Button, Container } from "react-bootstrap";
+import { Button, Container, Row } from "react-bootstrap";
 import HPheader from "../Components/HomePageHeader";
 import HPcarousel from "../Components/HomepageCarousel";
 import icon from "../assets/accessibility.png";
 import "../Pages/HomepageStyle.css"
 import { Link } from "react-router-dom";
+import { MDBBtn } from "mdb-react-ui-kit";
 
 function Homepage() {
   /* On the homepage i use simple div classes to seperate my code into different functions, the header contains a simple component, the body will hold all main
@@ -28,9 +29,42 @@ function Homepage() {
             </Container>
         </Container>
 
-        <div className="button mt-5">
-          <Button variant="warning">Warning</Button>
+        <div className="d-grid gap-4 d-md-block mt-5">
+          <MDBBtn rounded color="warning" href="/info" size="lg">Opening times</MDBBtn>
+          <MDBBtn rounded color="success" href="/info" size="lg">Accessibility</MDBBtn>
+          <MDBBtn rounded color="warning" href="/loyalty" size="lg">Become a member</MDBBtn>
+          <MDBBtn rounded color="success" href="/help" size="lg">Getting here</MDBBtn>
         </div>
+
+        <div className="Reviews mt-5">
+          <h1>What people think</h1>
+          <div className="row">
+            <div className="col">    
+              <p className="paraRev">
+                "i visied RZA with my family on a weekend. It was an amazing day out and the kids really enjoyed it.
+                We visited because our children really wanted to see a bengal tiger, we was not disappointed. This is
+                definately my favourite zoo ive visited in my life time and ive been to a fair few." -Ryan.L         
+              </p>
+            </div>
+
+            <div className="col">          
+              <p className="paraRev">
+                "For a zoo this is a great day out. We arrived at 11am and didnt leave until 5pm. Theres plent of animals to see
+                and something for everyone. This place isnt expensive like most zoos so you definately get your moneys worth." -Chris.F         
+              </p>
+            </div> 
+
+            <div className="col">
+            <p className="paraRev">
+                "Came here with just my boyfriend for a nice day out. We booked online which was super easy must i say, tickets we arrived
+                through the mail in just 2 days time. We had loads of fun petting some of the smaller animals, which is totally worth the small fee.
+                We would definately come back again in the future. 10/10" -Jody.S         
+              </p>
+            </div>
+          </div> 
+        </div>
+
+        
         
       </div>
     </>

@@ -31,3 +31,32 @@
     margin-right: auto;
     margin-bottom: auto;
   }
+
+  .paraRev{
+    text-align: left;
+    border-radius: 10px;
+    width: 70%;
+    color: #212529;
+    background-color: #00ad3a;
+    color: aliceblue;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+
+  .col {
+    float: left;
+    width: 10%;
+    
+  }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  @media screen and (max-width:600px) {
+    .column {
+      width: 100%;
+    }
+  }
