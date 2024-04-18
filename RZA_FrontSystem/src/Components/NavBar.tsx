@@ -11,7 +11,7 @@ import {
   EDUCATION_PATH,
 } from "../Constants/Paths";
 import Logo from "../assets/Logo.jpg";
-import "../Pages/All.css"
+import "../CSS_pages/All.css"
 
 function NaviBar() {
   return (
@@ -24,7 +24,7 @@ function NaviBar() {
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="me-auto">
-                <Nav.Link href={BOOKING_PATH}>Bookings</Nav.Link>
+                <Nav.Link href={BOOKING_PATH}>Tickets</Nav.Link>
                 <Nav.Link href={HOTEL_PATH}>Hotel</Nav.Link>
                 <Nav.Link href={EDUCATION_PATH}>Education</Nav.Link>
                 <NavDropdown title="Additional" id="collapsible-nav-dropdown">

@@ -1,4 +1,4 @@
-import "./All.css";
+import "../CSS_pages/All.css";
 import sadlion from "../assets/404-lion.gif"
 
 function NotFound(){

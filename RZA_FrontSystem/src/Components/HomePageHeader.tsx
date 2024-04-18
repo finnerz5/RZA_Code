@@ -14,7 +14,7 @@ function HPheader() {
         >
           <div
             className="mask"
-            style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}
+            style={{ backgroundColor: "rgba(0, 0, 0, 0.4)" }}
           >
             <div className="d-flex justify-content-center align-items-center h-100">
               <div className="text-white">

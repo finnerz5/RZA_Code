@@ -1,7 +1,7 @@
 import { Col, Container, Row } from "react-bootstrap";
 import HPheader from "../Components/HomePageHeader";
 import HPcarousel from "../Components/HomepageCarousel";
-import "../Pages/HomepageStyle.css";
+import "../CSS_pages/HomepageStyle.css";
 import { MDBBtn } from "mdb-react-ui-kit";
 import review from "../assets/Review_box.jpg";
 import CardInfo from "../Components/CardInfo";

@@ -1,4 +1,4 @@
-import "../Pages/All.css"
+import "../CSS_pages/All.css"
 
 const Footer = (): JSX.Element => <footer className="page-footer font-small blue pt-4 bg-white text-dark mt-5">
     <div className="container-fluid text-center text-md-left">
