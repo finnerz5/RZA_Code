@@ -1,10 +1,12 @@
-import { Button, Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import HPheader from "../Components/HomePageHeader";
 import HPcarousel from "../Components/HomepageCarousel";
-import icon from "../assets/accessibility.png";
-import "../Pages/HomepageStyle.css"
-import { Link } from "react-router-dom";
+import "../Pages/HomepageStyle.css";
 import { MDBBtn } from "mdb-react-ui-kit";
+import review from "../assets/Review_box.jpg";
+import CardInfo from "../Components/CardInfo";
+import CardBook from "../Components/CardBook";
+import CardContact from "../Components/CardContact";
 
 function Homepage() {
   /* On the homepage i use simple div classes to seperate my code into different functions, the header contains a simple component, the body will hold all main
@@ -64,7 +66,25 @@ function Homepage() {
           </div> 
         </div>
 
-        
+        <div className="Review">
+          <img src={review} width={200} height={100} />
+        </div>
+
+        <div className="Cards mt-5">
+          <Container>
+            <Row>
+              <Col>
+                <CardInfo/>
+              </Col>
+              <Col> 
+                <CardBook/>
+              </Col>
+              <Col>
+                <CardContact/>    
+              </Col>
+            </Row>
+          </Container>
+        </div>
         
       </div>
     </>
