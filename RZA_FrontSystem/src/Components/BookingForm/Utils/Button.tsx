@@ -56,7 +56,7 @@ function Button({ formStatus, setFormStatus, type }) {
               : alert("Please Select the Booking Date!")
           }
         >
-          + Book a Slot
+          Get Now
         </button>
       )}
     </div>

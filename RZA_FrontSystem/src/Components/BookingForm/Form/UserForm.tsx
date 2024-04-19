@@ -1,14 +1,17 @@
 /* eslint-disable no-unused-vars */
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addFormDetails } from "./FormSlice";
 import Button from "../Utils/Button";
+import axios from "axios";
 
 function UserForm() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [purpose, setPurpose] = useState("");
+  const [Aticket, setATicket] = useState("");
+  const [Cticket, setCTicket] = useState("");
+  const [, setMessage] = useState("");
   const [formStatus, setFormStatus] = useState(false);
   const [morningSlot, setMorningSlot] = useState(false);
   const [eveningSlot, setEveningSlot] = useState(false);
@@ -20,28 +23,53 @@ function UserForm() {
 
   const { formData } = useSelector((state) => state.form);
 
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
+  const handleSubmit = async (e: FormEvent) =>  {
     e.preventDefault();
-    if (morningSlot === false && eveningSlot === false) {
+    setMessage("");
+
+     if (morningSlot === false && eveningSlot === false) {
       alert("Select the Slot");
       return;
     }
-
-    const formData = {
+    
+    try {
+      const formData = await axios.post("http://localhost:5000/Tickets", {
+        name,
+        phone,
+        email,
+        Aticket,
+        Cticket,
+        morningSlot: prevMorninglSlot ? false : morningSlot,
+        eveningSlot: prevEveninglSlot ? false : eveningSlot,
+        currentSelectedDate,
+      });
+      setMessage(JSON.stringify(formData.data));
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        setMessage(error.message);
+      } else {
+        setMessage(String(error));
+      }
+    }
+  };
+   
+    /*const formData = {
       name,
       phone,
       email,
-      purpose,
+      Aticket,
+      Cticket,
       morningSlot: prevMorninglSlot ? false : morningSlot,
       eveningSlot: prevEveninglSlot ? false : eveningSlot,
       currentSelectedDate,
-    };
+    }; */
+  
 
     const isConfirmed = window.confirm(
-      `Form submitted:\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nPurpose: ${purpose}\nSlot- ${
-        morningSlot && prevMorninglSlot !== morningSlot ? "Morning Slot" : ""
+      `Form submitted:\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nAdults: ${Aticket}\nChildren: ${Cticket}\nSlot- ${
+        morningSlot && prevMorninglSlot !== morningSlot ? "Morning Slot  (10:00 - 15:00)" : ""
       } ${
-        eveningSlot && prevEveninglSlot !== eveningSlot ? "Evening Slot" : ""
+        eveningSlot && prevEveninglSlot !== eveningSlot ? "Evening Slot  (12:00 - 17:00)" : ""
       }\n
       \nDo you want to confirm?`
     );
@@ -52,10 +80,11 @@ function UserForm() {
       setName("");
       setPhone("");
       setEmail("");
-      setPurpose("");
       setFormStatus(false);
+      setATicket("");
+      setCTicket("");
     }
-  };
+ 
 
   useEffect(() => {
     const isPreviouslyMorningSlotBooked = formData.some(
@@ -122,11 +151,22 @@ function UserForm() {
           </div>
           <div>
             <input
-              type="text"
-              id="purpose"
-              value={purpose}
-              onChange={(e) => setPurpose(e.target.value)}
-              placeholder="Purpose of Booking"
+              type="number"
+              id="ticket"
+              value={Aticket}
+              onChange={(e) => setATicket(e.target.value)}
+              placeholder="adult tickets 17+"
+              required
+              className="pl-4 pr-2 py-1 rounded-lg border-l-2 border-black  outline-none"
+            />
+          </div>
+          <div>
+            <input
+              type="number"
+              id="ticket"
+              value={Cticket}
+              onChange={(e) => setCTicket(e.target.value)}
+              placeholder="Child tickets 16-"
               required
               className="pl-4 pr-2 py-1 rounded-lg border-l-2 border-black  outline-none"
             />
@@ -144,7 +184,7 @@ function UserForm() {
                 className="accent-black"
               />
               <label htmlFor="morningSlot">
-                {prevMorninglSlot ? "Morning Slot Booked" : "Morning Slot"}
+                {prevMorninglSlot ? "Morning Slot Booked" : "Morning Slot (10am-3pm)"}
               </label>
             </div>
             <div className="flex gap-2">
@@ -158,27 +198,26 @@ function UserForm() {
                 className="accent-black"
               />
               <label htmlFor="eveningSlot">
-                {prevEveninglSlot ? "Noon slot booked" : "Noon Slot"}
+                {prevEveninglSlot ? "Noon slot booked" : "Noon Slot (12am - 5pm)"}
               </label>
             </div>
           </div>
-          <Button
-            formStatus={formStatus}
-            setFormStatus={setFormStatus}
-            type="submit"
-            onClick={handleSubmit}
-          />
+          <Button formStatus={formStatus} setFormStatus={setFormStatus} type="submit" onClick={handleSubmit}/>
         </form>
       ) : (
         <div>
           <div>
-            <p className="text-center">Select a date and Start Booking!!</p>
+            <h5 className="text-center">Select a date and Secure Your tickets!!</h5>
+            <br/>
+            <h4>Adult Tickets: £21.00</h4>
+           
+            <h4>Child Tickets: £14.00</h4>
           </div>
           <Button formStatus={formStatus} setFormStatus={setFormStatus} type={undefined} />
         </div>
       )}
     </div>
   );
-}
+};
 
 export default UserForm;
