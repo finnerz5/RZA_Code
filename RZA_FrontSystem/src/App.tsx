@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import './App.css'
-import { INDEX_PATH, BOOKING_PATH, ACCOUNT_PATH, NOT_FOUND_PATH, SOCIAL_MEDIA_PATH, LOGIN_PATH, SIGN_UP_PATH, HELP_PATH, EDUCATION_PATH, MEMBER_PATH, HOTEL_PATH, INFO_PATH } from './Constants/Paths'
+import { INDEX_PATH, BOOKING_PATH, ACCOUNT_PATH, NOT_FOUND_PATH, SOCIAL_MEDIA_PATH, LOGIN_PATH, SIGN_UP_PATH, HELP_PATH, EDUCATION_PATH, MEMBER_PATH, HOTEL_PATH, INFO_PATH, TICKET_PATH } from './Constants/Paths'
 import Homepage from './Pages/HomePage'
 import Login from './Pages/Login'
 import NotFound from './Pages/NOTFOUND'
@@ -14,6 +14,7 @@ import Education from './Pages/Education'
 import Loyal from './Pages/Membership'
 import Hotel from './Pages/Hotel'
 import Info from './Pages/Information'
+import Ticket from './Pages/Tickets'
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
             <Route path={EDUCATION_PATH} element={<Education />} />
             <Route path={MEMBER_PATH} element={<Loyal />} />
             <Route path={INFO_PATH} element={<Info />} />
+            <Route path={TICKET_PATH} element={<Ticket />} />
           </Route>    
         </Routes>
     </>

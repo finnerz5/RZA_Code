@@ -1,6 +1,10 @@
 import BookingDrop from "../Components/BookingDropdownInfo";
 import BookingHeader from "../Components/BookingHeader";
+
 import "../CSS_pages/BookingStyle.css";
+import { MDBBtn } from "mdb-react-ui-kit";
+
+
 
 function Booking(){
     return(
@@ -20,6 +24,11 @@ function Booking(){
                 </h6>
 
                 <BookingDrop />
+
+                <div className="FormLink mt-5">
+                    <h1>Press Here to book Park tickets now!!</h1>
+                    <MDBBtn className="m-2" tag="a" outline size="lg" rel="nofollow" target="_blank" href="/tickets">Click Me!</MDBBtn>
+                </div>
 
             </div>
         </>
