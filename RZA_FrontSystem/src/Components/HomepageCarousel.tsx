@@ -5,8 +5,13 @@ import room from "../assets/safari-room.jpg";
 import visit from "../assets/education-visit.jpg";
 import caravid from "../assets/CaraVid.mp4";
 
+/* The `HPcarousel` function is a React functional component that creates a carousel for a homepage. It
+uses the `Carousel` component from `react-bootstrap` to display a slideshow of images and a video.
+The function also utilizes the `useContext` hook to access the theme context from
+`styled-components`. The carousel includes images of hotel rooms, educational visits, and a video
+showcasing wildlife at Riget Zoo Adventures. Each slide in the carousel contains a caption with a
+title and description. */
 function HPcarousel(){
-    // a simple component that creates a carousel for my homepage
     const themeContext = useContext(ThemeContext);
 
     return(

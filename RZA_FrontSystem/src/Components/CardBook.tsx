@@ -2,6 +2,9 @@ import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import booking from "../assets/Booking_icon.jpg";
 
+/* The `CardInfo` function is a React functional component that returns JSX code representing a card
+component. This card component includes an image, title, description, and a link to a booking page.
+The card displays information about booking tickets to visit animals or stay at a hotel. */
 function CardInfo(){
     return (
         <Card style={{ width: '15rem' }}>

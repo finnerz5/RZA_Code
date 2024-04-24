@@ -3,6 +3,10 @@ import { MDBContainer, MDBCard, MDBRow, MDBCol, MDBCardImage, MDBCardBody, MDBIc
 import { useState, FormEvent } from "react";
 import Logo from "../assets/Logo.jpg";
 
+/* The `function SignUpF(){` is defining a functional component in TypeScript with React. This
+component represents a sign-up form for users to create an account. Within this function component,
+state variables are declared using the `useState` hook to manage the form input values such as
+username, password, confirm password, first name, last name, email, and date of birth. */
 function SignUpF(){
     const [UserName, setUserName] = useState("");
     const [Password, setPassword] = useState("");
@@ -19,7 +23,7 @@ function SignUpF(){
 
 
         try{
-        const Reply = await axios.post("http://localhost:5000/SignUp", {
+        const Reply = await axios.post("http://localhost:65493/SignUp", {
         username: UserName,
         password: Password,
         confirm: Confirm,

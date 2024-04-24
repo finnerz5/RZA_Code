@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+/* This code snippet is defining a Redux slice using the `createSlice` function from the Redux Toolkit
+library in TypeScript. Here's a breakdown of what the code is doing: */
 const initialState = {
   currentMonth: {
     year: new Date().getFullYear(),

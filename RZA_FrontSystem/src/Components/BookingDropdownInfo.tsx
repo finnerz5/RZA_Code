@@ -1,6 +1,11 @@
 import "../CSS_pages/BookingStyle.css"
 import { Accordion, AccordionBody, AccordionHeader, AccordionItem } from "react-bootstrap";
 
+/* The `function BookingDrop()` is defining a functional component in TypeScript React. This component
+is rendering an Accordion component from the react-bootstrap library, which displays information
+about being cautious of scam ticket sellers. The component structure includes an AccordionItem with
+an AccordionHeader and AccordionBody containing the relevant information about avoiding scam ticket
+sellers. */
 function BookingDrop (){
     // a drop down that provides users on info about scam ticket sellers
 

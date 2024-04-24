@@ -1,7 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentMonth } from "./CalendarSlice";
 
-function CalHeader() {
+/* The `CalHeader` function is a React functional component that represents the header section of a
+calendar. It includes navigation buttons to move between months. The component uses Redux hooks
+`useSelector` and `useDispatch` to access the current month state from the Redux store and dispatch
+actions to update the current month. */
+  function CalHeader() {
   const monthOptions = [
     "January",
     "February",

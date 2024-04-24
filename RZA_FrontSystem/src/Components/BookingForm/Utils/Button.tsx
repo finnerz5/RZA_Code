@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 /* eslint-disable no-unused-vars */
+/* The `Button` function is a React functional component that takes three props as arguments:
+`formStatus`, `setFormStatus`, and `type`. These props are being destructured from the props object
+passed to the component. */
 function Button({ formStatus, setFormStatus, type }) {
   const { currentSelectedDate } = useSelector((state) => state.calendar);
 

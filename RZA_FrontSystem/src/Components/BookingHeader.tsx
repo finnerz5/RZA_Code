@@ -1,6 +1,11 @@
 import { MDBBtn } from "mdb-react-ui-kit";
 import header from "../assets/Booking_header_image.jpg";
 
+/* The `BookingHeader` function is a React component that creates a header for the top of the booking
+page. It returns JSX elements that include an image background, text content, and a button for
+booking a hotel. The function uses the `header` image imported from an assets folder and the
+`MDBBtn` component from the mdb-react-ui-kit library to render the header section with styling and
+interactive elements. */
 function BookingHeader(){
     // component that creates a header for the top of the booking page.
 

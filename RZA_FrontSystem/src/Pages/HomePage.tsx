@@ -7,10 +7,12 @@ import review from "../assets/Review_box.jpg";
 import CardInfo from "../Components/CardInfo";
 import CardBook from "../Components/CardBook";
 import CardContact from "../Components/CardContact";
+/* The `Homepage()` function is a React functional component that represents the homepage of a website.
+Inside this function, JSX (a syntax extension for JavaScript that looks similar to HTML) is used to
+define the structure and content of the homepage. The function returns the JSX elements that make up
+the homepage layout, including headers, paragraphs, buttons, reviews, images, and cards. */
 
 function Homepage() {
-  /* On the homepage i use simple div classes to seperate my code into different functions, the header contains a simple component, the body will hold all main
-  parts of the homepage to give it its feel and look for the user */
 
   return (
     <>

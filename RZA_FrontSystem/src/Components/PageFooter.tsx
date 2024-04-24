@@ -1,5 +1,7 @@
 import "../CSS_pages/All.css"
 
+/* The `const Footer` is a functional component in TypeScript React that defines the footer section of
+a webpage. It returns JSX elements representing the structure and content of the footer. */
 const Footer = (): JSX.Element => <footer className="page-footer font-small blue pt-4 bg-white text-dark mt-5">
     <div className="container-fluid text-center text-md-left">
         <div className="row">

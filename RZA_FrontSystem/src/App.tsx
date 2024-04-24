@@ -18,6 +18,13 @@ import Ticket from './Pages/Tickets'
 import AccountCredentialsProvider from './Components/LoginForm/AccountProvider'
 
 
+/* The `function App() {` is defining a functional component named `App`. This component is responsible
+for rendering the main structure of the application. Inside the component, it returns JSX elements
+that represent the different routes and pages of the application using React Router. Each `<Route>`
+component specifies a path and the corresponding component to render when that path is matched.
+Additionally, the component is wrapped in an `<AccountCredentialsProvider>` component, which likely
+provides authentication-related functionality to the child components. */
+
 function App() {
 
   return (

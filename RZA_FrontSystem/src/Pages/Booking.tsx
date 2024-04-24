@@ -6,6 +6,11 @@ import { MDBBtn } from "mdb-react-ui-kit";
 
 
 
+/* The `function Booking(){` is defining a functional component named `Booking` in React. This
+component returns JSX elements that make up the structure of a booking page for Riget Zoo Adventures
+Tickets. The component includes elements like headers, text content, a dropdown component, and a
+button for booking park tickets. */
+
 function Booking(){
     return(
         <>

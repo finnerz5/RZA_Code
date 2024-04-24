@@ -2,6 +2,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { addSelectedCurrentDate } from "./CalendarSlice";
 
+/* The `CalendarTableContent` function is a React component that generates a calendar table based on
+the current month and year. It uses Redux hooks `useDispatch` and `useSelector` to interact with the
+Redux store. The function `generateCalendar` calculates the days in the month and the starting day
+of the month. It then generates a 6x7 matrix representing the calendar. */
 function CalendarTableContent() {
   const dispatch = useDispatch();
   const { currentMonth } = useSelector((state) => state.calendar);

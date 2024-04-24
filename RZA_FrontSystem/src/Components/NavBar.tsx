@@ -13,6 +13,10 @@ import {
 import Logo from "../assets/Logo.jpg";
 import "../CSS_pages/All.css"
 
+/* The `function NaviBar()` is a functional component in React that defines a navigation bar for a
+website. It uses the React Bootstrap library to create a responsive navbar with various navigation
+links such as Tickets, Hotel, Education, Information, Help, Membership, Login, and Account. The
+component also imports logo image and CSS styles to customize the appearance of the navbar. */
 function NaviBar() {
   return (
     <>

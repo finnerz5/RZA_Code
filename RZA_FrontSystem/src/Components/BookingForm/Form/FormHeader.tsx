@@ -2,6 +2,10 @@
 
 import { useSelector } from "react-redux";
 
+/* The `FormHeader` function is a React functional component that serves as the header section for a
+form. Within this component, it accesses the `currentSelectedDate` from the Redux store using the
+`useSelector` hook from `react-redux`. It then displays the selected date and day of the week in the
+header section. */
 function FormHeader() {
   const { currentSelectedDate } = useSelector((state) => state.calendar);
 

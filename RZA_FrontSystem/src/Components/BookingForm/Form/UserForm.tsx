@@ -5,6 +5,10 @@ import { addFormDetails } from "./FormSlice";
 import Button from "../Utils/Button";
 import axios from "axios";
 
+/* The `UserForm` function is a React functional component that represents a form for users to input
+their details and book tickets. Inside the component, it manages various states using the `useState`
+hook for fields like name, phone, email, ticket quantities, slot selections, form status, and
+messages. */
 function UserForm() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -27,31 +31,32 @@ function UserForm() {
     e.preventDefault();
     setMessage("");
 
-    // const isConfirmed = window.confirm(
-    //   `Form submitted:\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nAdults: ${Aticket}\nChildren: ${Cticket}\nSlot- ${
-    //     morningSlot && prevMorninglSlot !== morningSlot ? "Morning Slot  (10:00 - 15:00)" : ""
-    //   } ${
-    //     eveningSlot && prevEveninglSlot !== eveningSlot ? "Evening Slot  (12:00 - 17:00)" : ""
-    //   }\n
-    //   \nDo you want to confirm?`
-    // );
-    
-    // if (isConfirmed) {
-    //   dispatch(addFormDetails(formData));
-    //   alert("Booked!!!");
-    //   setName("");
-    //   setPhone("");
-    //   setEmail("");                                                                
-    //   setCTicket("");
-    // }
-
     if (morningSlot === false && eveningSlot === false) {
       alert("Select the Slot");
       return;
     }
 
+    const isConfirmed = window.confirm(
+      `Form submitted:\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nAdults: ${Aticket}\nChildren: ${Cticket}\nSlot- ${
+        morningSlot && prevMorninglSlot !== morningSlot ? "Morning Slot  (10:00 - 15:00)" : ""
+      } ${
+        eveningSlot && prevEveninglSlot !== eveningSlot ? "Evening Slot  (12:00 - 17:00)" : ""
+      }\n
+      \nDo you want to confirm?`
+    );
+    
+    if (isConfirmed) {
+      dispatch(addFormDetails(formData));
+      alert("Booked!!!");
+      setName("");
+      setPhone("");
+      setEmail("");                                                                
+      setCTicket("");
+    }
+
+  
     try {
-      const Reply = await axios.post("http://localhost:5000/Tickets", {
+      const Reply = await axios.post("http://localhost:65493/Tickets", {
         name,
         phone,
         email,
@@ -198,7 +203,7 @@ function UserForm() {
               </label>
             </div>
           </div>
-          <Button formStatus={formStatus} setFormStatus={setFormStatus} type="submit" onClick={handleSubmit}/> 
+          <Button formStatus={formStatus} setFormStatus={setFormStatus} type="submit"  onClick={handleSubmit}/>
         </form>
       ) : (
         <div>

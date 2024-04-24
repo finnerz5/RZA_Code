@@ -2,6 +2,10 @@ import { useContext } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { AccountCredentialsContext } from "../Components/LoginForm/AccountProvider";
 
+/* The `function Account()` is a functional component in a TypeScript React application. It is used to
+render the account information of a user. Inside the component, it uses the `useContext` hook to
+access the `AccountCredentialsContext` which provides the account credentials data. */
+
 function Account(){
     const accountCredentialsContext = useContext(AccountCredentialsContext)
     

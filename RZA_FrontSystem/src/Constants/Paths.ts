@@ -1,3 +1,9 @@
+/* These lines of code are defining constants for various paths used in a web application. Each
+constant represents a specific path that users can navigate to within the application. For example,
+`INDEX_PATH` represents the root path "/", `SIGN_UP_PATH` represents the path for signing up,
+`LOGIN_PATH` represents the path for logging in, and so on for other paths like booking, help,
+account, social media, info, hotel, education, member, ticket, and not found. */
+
 const INDEX_PATH = "/";
 const SIGN_UP_PATH = "/signup";
 const LOGIN_PATH = "/login";
