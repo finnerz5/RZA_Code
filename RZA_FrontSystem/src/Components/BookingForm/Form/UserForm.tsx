@@ -23,17 +23,35 @@ function UserForm() {
 
   const { formData } = useSelector((state) => state.form);
 
-  const handleSubmit = async (e: FormEvent) =>  {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setMessage("");
 
-     if (morningSlot === false && eveningSlot === false) {
+    // const isConfirmed = window.confirm(
+    //   `Form submitted:\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nAdults: ${Aticket}\nChildren: ${Cticket}\nSlot- ${
+    //     morningSlot && prevMorninglSlot !== morningSlot ? "Morning Slot  (10:00 - 15:00)" : ""
+    //   } ${
+    //     eveningSlot && prevEveninglSlot !== eveningSlot ? "Evening Slot  (12:00 - 17:00)" : ""
+    //   }\n
+    //   \nDo you want to confirm?`
+    // );
+    
+    // if (isConfirmed) {
+    //   dispatch(addFormDetails(formData));
+    //   alert("Booked!!!");
+    //   setName("");
+    //   setPhone("");
+    //   setEmail("");                                                                
+    //   setCTicket("");
+    // }
+
+    if (morningSlot === false && eveningSlot === false) {
       alert("Select the Slot");
       return;
     }
-    
+
     try {
-      const formData = await axios.post("http://localhost:5000/Tickets", {
+      const Reply = await axios.post("http://localhost:5000/Tickets", {
         name,
         phone,
         email,
@@ -43,7 +61,7 @@ function UserForm() {
         eveningSlot: prevEveninglSlot ? false : eveningSlot,
         currentSelectedDate,
       });
-      setMessage(JSON.stringify(formData.data));
+      setMessage(JSON.stringify(Reply.data));
     } catch (error) {
       if (axios.isAxiosError(error)) {
         setMessage(error.message);
@@ -52,43 +70,14 @@ function UserForm() {
       }
     }
   };
-   
-    /*const formData = {
-      name,
-      phone,
-      email,
-      Aticket,
-      Cticket,
-      morningSlot: prevMorninglSlot ? false : morningSlot,
-      eveningSlot: prevEveninglSlot ? false : eveningSlot,
-      currentSelectedDate,
-    }; */
-  
 
-    const isConfirmed = window.confirm(
-      `Form submitted:\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nAdults: ${Aticket}\nChildren: ${Cticket}\nSlot- ${
-        morningSlot && prevMorninglSlot !== morningSlot ? "Morning Slot  (10:00 - 15:00)" : ""
-      } ${
-        eveningSlot && prevEveninglSlot !== eveningSlot ? "Evening Slot  (12:00 - 17:00)" : ""
-      }\n
-      \nDo you want to confirm?`
-    );
-
-    if (isConfirmed) {
-      dispatch(addFormDetails(formData));
-      alert("Booked!!!");
-      setName("");
-      setPhone("");
-      setEmail("");
-      setFormStatus(false);
-      setATicket("");
-      setCTicket("");
-    }
- 
 
   useEffect(() => {
     const isPreviouslyMorningSlotBooked = formData.some(
-      (entry: { currentSelectedDate: { year: any; month: any; date: any; }; morningSlot: any; }) =>
+      (entry: {
+        currentSelectedDate: { year: any; month: any; date: any };
+        morningSlot: any;
+      }) =>
         entry.currentSelectedDate &&
         entry.currentSelectedDate.year === currentSelectedDate.year &&
         entry.currentSelectedDate.month === currentSelectedDate.month &&
@@ -100,7 +89,10 @@ function UserForm() {
     setPrevMorningSlot(isPreviouslyMorningSlotBooked);
 
     const isPreviouslyNoonSlotBooked = formData.some(
-      (entry: { currentSelectedDate: { year: any; month: any; date: any; }; eveningSlot: any; }) =>
+      (entry: {
+        currentSelectedDate: { year: any; month: any; date: any };
+        eveningSlot: any;
+      }) =>
         entry.currentSelectedDate &&
         entry.currentSelectedDate.year === currentSelectedDate.year &&
         entry.currentSelectedDate.month === currentSelectedDate.month &&
@@ -184,7 +176,9 @@ function UserForm() {
                 className="accent-black"
               />
               <label htmlFor="morningSlot">
-                {prevMorninglSlot ? "Morning Slot Booked" : "Morning Slot (10am-3pm)"}
+                {prevMorninglSlot
+                  ? "Morning Slot Booked"
+                  : "Morning Slot (10am-3pm)"}
               </label>
             </div>
             <div className="flex gap-2">
@@ -198,26 +192,36 @@ function UserForm() {
                 className="accent-black"
               />
               <label htmlFor="eveningSlot">
-                {prevEveninglSlot ? "Noon slot booked" : "Noon Slot (12am - 5pm)"}
+                {prevEveninglSlot
+                  ? "Noon slot booked"
+                  : "Noon Slot (12am - 5pm)"}
               </label>
             </div>
           </div>
-          <Button formStatus={formStatus} setFormStatus={setFormStatus} type="submit" onClick={handleSubmit}/>
+          <Button formStatus={formStatus} setFormStatus={setFormStatus} type="submit" onClick={handleSubmit}/> 
         </form>
       ) : (
         <div>
           <div>
-            <h5 className="text-center">Select a date and Secure Your tickets!!</h5>
-            <br/>
+            <h5 className="text-center">
+              Select a date and Secure Your tickets!!
+            </h5>
+            <br />
             <h4>Adult Tickets: £21.00</h4>
-           
+
             <h4>Child Tickets: £14.00</h4>
+
+            <h4>Member Discount: 15%</h4>
           </div>
-          <Button formStatus={formStatus} setFormStatus={setFormStatus} type={undefined} />
+          <Button
+            formStatus={formStatus}
+            setFormStatus={setFormStatus}
+            type={undefined}
+          />
         </div>
       )}
     </div>
   );
-};
+}
 
 export default UserForm;

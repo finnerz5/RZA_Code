@@ -1,7 +1,9 @@
+import LoginF from "../Components/LoginForm/LoginForm";
+
 function Login(){
     return(
         <>
-            <h1>Page in progress</h1>        
+            <LoginF />       
         </>
     )
 }

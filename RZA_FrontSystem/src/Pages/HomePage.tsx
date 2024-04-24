@@ -51,7 +51,7 @@ function Homepage() {
 
             <div className="col">          
               <p className="paraRev">
-                "For a zoo this is a great day out. We arrived at 11am and didnt leave until 5pm. Theres plent of animals to see
+                "For a zoo this is a great day out. We arrived at 11am and didnt leave until 5pm. Theres plenty of animals to see
                 and something for everyone. This place isnt expensive like most zoos so you definately get your moneys worth." -Chris.F         
               </p>
             </div> 
@@ -66,8 +66,8 @@ function Homepage() {
           </div> 
         </div>
 
-        <div className="Review">
-          <img src={review} width={200} height={100} />
+        <div className="">
+          <img src={review} width={300} height={200} className="revIMG"/>
         </div>
 
         <div className="Cards mt-5">
