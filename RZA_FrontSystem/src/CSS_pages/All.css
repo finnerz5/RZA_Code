@@ -20,3 +20,11 @@
     height: 50vh;
 }
 
+.ConfirmStyle{
+    text-align: center;
+    padding-top: 3%;
+}
+
+.ConfirmText{
+    text-align: center;
+}

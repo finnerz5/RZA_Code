@@ -12,14 +12,14 @@ function Account(){
     return(
         <>
             <div className="Account">
-                <h1 className="AccountInfo">Account Info</h1>
+                <h1 className="AccountInfo text-center pt-5">Account Info</h1>
                 <Container className="pt-5">
                     <Row>
                         <Col className="rounded-corners">
                             <p className="fs-3 text-light">Username: {accountCredentialsContext?.accountCredentials?.username}</p>
                         </Col>
 
-                        <Col className="rounded-corners">
+                        <Col className="rounded-corners ">
                             <p className="fs-3 text-light">Password: {accountCredentialsContext?.accountCredentials?.password}</p> 
                         </Col>
                     </Row>

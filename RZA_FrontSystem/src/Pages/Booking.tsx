@@ -1,8 +1,10 @@
+
+import { useNavigate } from "react-router-dom";
 import BookingDrop from "../Components/BookingDropdownInfo";
 import BookingHeader from "../Components/BookingHeader";
-
 import "../CSS_pages/BookingStyle.css";
 import { MDBBtn } from "mdb-react-ui-kit";
+
 
 
 
@@ -12,6 +14,12 @@ Tickets. The component includes elements like headers, text content, a dropdown 
 button for booking park tickets. */
 
 function Booking(){
+    const navigate = useNavigate();
+
+    function handleClick(){
+        navigate("/tickets");
+    }
+    
     return(
         <>
             <div className="header">
@@ -32,7 +40,7 @@ function Booking(){
 
                 <div className="FormLink mt-5">
                     <h1>Press Here to book Park tickets now!!</h1>
-                    <MDBBtn className="m-2" tag="a" outline size="lg" rel="nofollow" target="_blank" href="/tickets">Click Me!</MDBBtn>
+                    <MDBBtn onClick={handleClick} outline className='mx-2' color='dark' size="lg">Click Me!</MDBBtn>
                 </div>
 
             </div>
