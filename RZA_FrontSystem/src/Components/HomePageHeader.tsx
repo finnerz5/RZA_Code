@@ -10,12 +10,10 @@ function HPheader() {
         <div
           id="header-img"
           className="p-5 text-center bg-image"
-          style={{ backgroundImage: `url(${backgroundImage})` }}
-        >
+          style={{ backgroundImage: `url(${backgroundImage})` }}>
           <div
             className="mask"
-            style={{ backgroundColor: "rgba(0, 0, 0, 0.4)" }}
-          >
+            style={{ backgroundColor: "rgba(0, 0, 0, 0.4)" }}>
             <div className="d-flex justify-content-center align-items-center h-100">
               <div className="text-white">
                 <h1 className="mb-3">Visit Riget Zoo Adventure</h1>

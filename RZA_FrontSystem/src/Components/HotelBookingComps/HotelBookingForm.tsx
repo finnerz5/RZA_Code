@@ -17,58 +17,60 @@ import axios from "axios";
 import Form from "react-bootstrap/esm/Form";
 import { es } from "date-fns/locale/es";
 import { useNavigate } from "react-router-dom";
-import monkey from "../../assets/MonkeyTree.jpg";
+import lizard from "../../assets/LizardZ00.jpg";
 
-/* The `function TicketForm(){` is defining a functional component in React called `TicketForm`. This
-component is responsible for rendering a form for booking tickets. Inside the component, it
-initializes several state variables using the `useState` hook to manage form inputs such as Name,
-date, Message, Email, Mobile, Aticket, and Cticket. */
-function TicketForm() {
+/* The `function HotelBooking(){` is defining a functional component named `HotelBooking` in React.
+This component is responsible for rendering a form for booking hotel tickets. Within this function,
+various state variables are initialized using the `useState` hook to manage form inputs such as
+Name, date, Message, Aticket, Cticket, Email, and Mobile. */
+function HotelBooking() {
   const [Name, setName] = useState("");
   const [date, setDate] = useState(new Date());
+  const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState();
   const [Message, setMessage] = useState("");
-  const [, setAticket] = useState("");
-  const [, setCticket] = useState("");
+  const [, setAguests] = useState("");
+  const [, setCguests] = useState("");
   const [Email, setEmail] = useState("");
   const [Mobile, setMobile] = useState("");
 
-  const Atickets = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
-  const Ctickets = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+  const Aguests = ["1", "2", "3", "4", "5"];
+  const Cguests = ["1", "2", "3", "4", "5"];
 
   const weekend = (date) => new Date() < date;
 
   registerLocale("es", es);
   const navigate = useNavigate();
 
-  /* The line `const [AticketOps, setAticketOps] = useState<any[]>([` is initializing a state variable
-   named `AticketOps` using the `useState` hook in React. */
-  const [AticketOps, setAticketOps] = useState(0);
+  /* The code snippet `const [AguestOps, setAguestOps] = useState(0);` and `const [CguestOps,
+   setCguestOps] = useState(0);` is defining state variables `AguestOps` and `CguestOps` using the
+   `useState` hook in React. */
+  const [AguestOps, setAguestOps] = useState(0);
 
-  const [CticketOps, setCticketOps] = useState(0);
+  const [CguestOps, setCguestOps] = useState(0);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setMessage("");
-    console.log("Sending request");
 
     /* The `try {` block in the code is used for error handling in JavaScript/TypeScript. Inside
         the `try` block, the code that might throw an error is placed. If an error occurs within the
         `try` block, the execution is immediately transferred to the `catch` block. */
     try {
-      const Reply = await axios.post("http://localhost:5000/Tickets", {
-        Date: date,
+      const Reply = await axios.post("http://localhost:5000/HotelBookings", {
+        startdate: startDate,
+        enddate: endDate,
         name: Name,
-        aticket: AticketOps,
-        cticket: CticketOps,
+        aguest: AguestOps,
+        cguest: CguestOps,
         email: Email,
         mobile: Mobile,
       });
       setMessage(JSON.stringify(Reply.data));
-      if (Reply.data["Tickets Booked"]) {
+      if (Reply.data["Hotel Booked"]) {
         navigate("/confirm");
       }
     } catch (error) {
-      console.log(error);
       if (axios.isAxiosError(error)) {
         setMessage(error.message);
       } else {
@@ -85,9 +87,9 @@ function TicketForm() {
             <MDBRow className="g-0">
               <MDBCol md="6">
                 <MDBCardImage
-                  src={monkey}
+                  src={lizard}
                   alt="login form"
-                  className="pt-5 rounded-start w-100"
+                  className=" pt-5 rounded-start w-100"
                 />
               </MDBCol>
 
@@ -103,6 +105,7 @@ function TicketForm() {
                       <img src={logo} />
                     </span>
                   </div>
+
                   <h5
                     className="fw-normal my-4 pb-3"
                     style={{
@@ -111,8 +114,9 @@ function TicketForm() {
                       fontSize: "50px",
                     }}
                   >
-                    book Tickets!
+                    book Your stay!
                   </h5>
+
                   <MDBInput
                     wrapperClass="mb-4"
                     label="Name"
@@ -137,39 +141,53 @@ function TicketForm() {
                     size="lg"
                     onChange={(e) => setMobile(e.target.value)}
                   />
-                  
+
                   <Form.Select
                     className=""
                     aria-label="Default select example"
-                    onChange={(e) => setAticketOps(Number(e.target.value))}
+                    onChange={(e) => setAguestOps(Number(e.target.value))}
                   >
                     <option>Select Adult Tickets</option>
-                    {Atickets.map((Aticket) => (
-                      <option value={Aticket}>{Aticket}</option>
+                    {Aguests.map((Aguest) => (
+                      <option value={Aguest}>{Aguest}</option>
                     ))}
                   </Form.Select>
+
                   <br />
-                  
+
                   <Form.Select
                     className=""
                     aria-label="Default select example"
-                    onChange={(e) => setCticketOps(Number(e.target.value))}
+                    onChange={(e) => setCguestOps(Number(e.target.value))}
                   >
                     <option>Select kids tickets</option>
-                    {Ctickets.map((Cticket) => (
-                      <option value={Cticket}>{Cticket}</option>
+                    {Cguests.map((Cguest) => (
+                      <option value={Cguest}>{Cguest}</option>
                     ))}
                   </Form.Select>
-                  
+
                   <br />
-                  <h5>select date of visit</h5>
-                  <DatePicker
-                    isClearable
-                    filterDate={weekend}
-                    className="w-50 text-center"
-                    selected={date}
-                    onChange={(date) => setDate(date)}
-                  />
+                  <h5 className="text-center">select dates of stay</h5>
+                  <div>
+                    <DatePicker
+                      className="w-50 mx-5"
+                      selectsStart
+                      filterDate={weekend}
+                      selected={startDate}
+                      onChange={(date) => setStartDate(date)}
+                      startDate={startDate}
+                    />
+                    <DatePicker
+                      selectsEnd
+                      filterDate={weekend}
+                      selected={endDate}
+                      onChange={(date) => setEndDate(date)}
+                      endDate={endDate}
+                      startDate={startDate}
+                      minDate={startDate}
+                    />
+                  </div>
+
                   <MDBBtn
                     className="mb-4 mt-3 px-5"
                     color="dark"
@@ -197,4 +215,4 @@ function TicketForm() {
   );
 }
 
-export default TicketForm;
+export default HotelBooking;

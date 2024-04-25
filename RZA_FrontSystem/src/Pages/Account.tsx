@@ -16,11 +16,11 @@ function Account(){
                 <Container className="pt-5">
                     <Row>
                         <Col className="rounded-corners">
-                            <p className="fs-3 text-light">Username: {accountCredentialsContext?.accountCredentials?.username}</p>
+                            <p className="fs-3 text-dark">Username: {accountCredentialsContext?.accountCredentials?.username}</p>
                         </Col>
 
                         <Col className="rounded-corners ">
-                            <p className="fs-3 text-light">Password: {accountCredentialsContext?.accountCredentials?.password}</p> 
+                            <p className="fs-3 text-dark">Password: {accountCredentialsContext?.accountCredentials?.password}</p> 
                         </Col>
                     </Row>
                 </Container>
