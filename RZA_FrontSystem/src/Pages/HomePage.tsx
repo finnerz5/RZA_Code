@@ -34,10 +34,10 @@ function Homepage() {
         </Container>
 
         <div className="d-grid gap-4 d-md-block mt-5">
-          <MDBBtn rounded color="warning" href="/info" size="lg">Opening times</MDBBtn>
+          <MDBBtn rounded color="warning" href="/info" size="lg">Getting Here</MDBBtn>
           <MDBBtn rounded color="success" href="/info" size="lg">Accessibility</MDBBtn>
           <MDBBtn rounded color="warning" href="/loyalty" size="lg">Become a member</MDBBtn>
-          <MDBBtn rounded color="success" href="/help" size="lg">Getting here</MDBBtn>
+          <MDBBtn rounded color="success" href="/help" size="lg">Opening Times</MDBBtn>
         </div>
 
         <div className="Reviews mt-5">
