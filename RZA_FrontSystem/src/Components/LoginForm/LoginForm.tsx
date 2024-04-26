@@ -42,10 +42,8 @@ function LoginF(){
   
     return (
         <MDBContainer className="my-5">
-  
         <MDBCard>
           <MDBRow className='g-0'>
-  
             <MDBCol md='6'>
               <MDBCardImage src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp' alt="login form" className='rounded-start w-100'/>
             </MDBCol>
@@ -74,10 +72,8 @@ function LoginF(){
   
               </MDBCardBody>
             </MDBCol>
-  
           </MDBRow>
         </MDBCard>
-  
       </MDBContainer>
     )
   }
