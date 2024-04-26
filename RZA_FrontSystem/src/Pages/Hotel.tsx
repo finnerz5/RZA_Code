@@ -1,20 +1,38 @@
 import { MDBBtn } from "mdb-react-ui-kit";
-import Hotelheader from "../Components/HotelHeader";
+import Hotelheader from "../Components/HotelBodyComps/HotelHeader";
 import { useNavigate } from "react-router-dom";
+import Hotelcarousel from "../Components/HotelBodyComps/HotelCarousel";
+import { Container } from "react-bootstrap";
+import HotelInfo from "../Components/HotelBodyComps/Info";
+import PriceCard from "../Components/HotelBodyComps/HotelPriceCard";
+import HbookCard from "../Components/HotelBodyComps/BookLinkCard";
 
 function Hotel(){
-    
-    const navigate = useNavigate();
 
-    function handleClick(){
-        navigate("/stayform");
-    }
     return(
         <>
-            {/* <div className="body">
+            <div className="header">
                 <Hotelheader />
-                <MDBBtn onClick={handleClick} outline className='mx-2' color='dark' size="lg">Click Me!</MDBBtn>
-            </div> */}
+            </div>
+
+
+            <Container className="pt-5">
+                <Container>
+                    <Hotelcarousel />
+                </Container>
+            </Container>
+
+            <div className="body">
+                <HotelInfo />
+            <Container>
+                <PriceCard />
+            </Container>
+
+            <Container>
+                <HbookCard />
+            </Container>
+            </div>
+            
         </>
     )
 }

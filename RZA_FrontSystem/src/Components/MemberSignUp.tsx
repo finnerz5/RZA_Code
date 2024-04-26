@@ -10,30 +10,38 @@ import {
   MDBInput,
   MDBBtn,
 } from "mdb-react-ui-kit";
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useContext, useEffect } from "react";
 import Logo from "../assets/Logo.jpg";
+import { useNavigate } from "react-router-dom";
+import { AccountCredentialsContext } from "./LoginForm/AccountProvider";
+
 
 /* The `function SignUpF(){` is defining a functional component in TypeScript with React. This
 component represents a sign-up form for users to create an account. Within this function component,
 state variables are declared using the `useState` hook to manage the form input values such as
 username, password, confirm password, first name, last name, email, and date of birth. */
-function SignUpF() {
+function MemberSignUp() {
   const [UserName, setUserName] = useState("");
   const [Password, setPassword] = useState("");
   const [Confirm, setConfirm] = useState("");
   const [Fname, setFname] = useState("");
+  const navigate = useNavigate();
   const [Lname, setLname] = useState("");
   const [Email, setEmail] = useState("");
   const [Mobile, setMobile] = useState("");
   const [DOB, setDOB] = useState("");
   const [Message, setMessage] = useState("");
+  const accountCredentialsContext = useContext(AccountCredentialsContext);
+
+
+  
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setMessage("");
 
     try {
-      const Reply = await axios.post("http://localhost:5000/SignUp", {
+      const Reply = await axios.post("http://localhost:5000/MemSign", {
         username: UserName,
         password: Password,
         confirm: Confirm,
@@ -44,6 +52,10 @@ function SignUpF() {
         dob: DOB,
       });
       setMessage(JSON.stringify(Reply.data));
+      if(Reply.data["member Sign up Successful."]){
+        accountCredentialsContext?.setAccountCredentials({username: UserName, password: Password})
+        navigate("/loyalty")
+    }
     } catch (error) {
       if (axios.isAxiosError(error)) {
         setMessage(error.message);
@@ -82,7 +94,7 @@ function SignUpF() {
                 className="fw-normal my-4 pb-3"
                 style={{ letterSpacing: "1px" }}
               >
-                Create your account
+                Become a member
               </h5>
 
               <MDBInput
@@ -101,14 +113,7 @@ function SignUpF() {
                 size="lg"
                 onChange={(e) => setLname(e.target.value)}
               />
-              <MDBInput
-                wrapperClass="mb-4"
-                label="Date of Birth"
-                id="formControlLg"
-                type="string"
-                size="lg"
-                onChange={(e) => setDOB(e.target.value)}
-              />
+
               <MDBInput
                 wrapperClass="mb-4"
                 label="Email"
@@ -117,17 +122,29 @@ function SignUpF() {
                 size="lg"
                 onChange={(e) => setEmail(e.target.value)}
               />
-               <MDBInput
+
+              <MDBInput
                 wrapperClass="mb-4"
-                label="mobile"
+                label="Mobile"
                 id="formControlLg"
-                type="mobile"
+                type="phone"
                 size="lg"
                 onChange={(e) => setMobile(e.target.value)}
               />
+
+              <MDBInput
+                wrapperClass="mb-4"
+                label="Date of Birth"
+                id="formControlLg"
+                type="dob"
+                size="lg"
+                onChange={(e) => setDOB(e.target.value)}
+              />
+             
               <MDBInput
                 wrapperClass="mb-4"
                 label="UserName"
+                placeholder="UserName Must Contain .Member e.g- mike12.Member"
                 id="formControlLg"
                 type="text"
                 size="lg"
@@ -167,12 +184,6 @@ function SignUpF() {
                   Login here
                 </a>
               </p>
-              <p className="mb-5 pb-lg-2" style={{ color: "#393f81" }}>
-                Want to be a member?{" "}
-                <a href="/membershipsignup" style={{ color: "#393f81" }}>
-                  Click here
-                </a>
-              </p>
               {Message && <p>Response: {Message}</p>}
               <div className="d-flex flex-row justify-content-start">
                 <a href="#!" className="small text-muted me-1">
@@ -190,4 +201,4 @@ function SignUpF() {
   );
 }
 
-export default SignUpF;
+export default MemberSignUp;

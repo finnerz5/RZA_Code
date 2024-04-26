@@ -1,4 +1,4 @@
-import header from "../assets/Hotelheader.jpg";
+import header from "../../assets/Hotelheader.jpg";
 
 function Hotelheader(){
     return(

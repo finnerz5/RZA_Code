@@ -33,9 +33,11 @@ function HotelBooking() {
   const [, setCguests] = useState("");
   const [Email, setEmail] = useState("");
   const [Mobile, setMobile] = useState("");
+  const [,setRooms] = useState("");
 
   const Aguests = ["1", "2", "3", "4", "5"];
   const Cguests = ["1", "2", "3", "4", "5"];
+  const Rooms = ["single double", "twin double", "twin single", "Normal family room", "Deluxe family room","disabled access family room"];
 
   const weekend = (date) => new Date() < date;
 
@@ -48,6 +50,8 @@ function HotelBooking() {
   const [AguestOps, setAguestOps] = useState(0);
 
   const [CguestOps, setCguestOps] = useState(0);
+
+  const [RoomOps, SetRoomOps] = useState("");
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -65,6 +69,7 @@ function HotelBooking() {
         cguest: CguestOps,
         email: Email,
         mobile: Mobile,
+        room: RoomOps,
       });
       setMessage(JSON.stringify(Reply.data));
       if (Reply.data["Hotel Booked"]) {
@@ -147,7 +152,7 @@ function HotelBooking() {
                     aria-label="Default select example"
                     onChange={(e) => setAguestOps(Number(e.target.value))}
                   >
-                    <option>Select Adult Tickets</option>
+                    <option>Select Adult guests</option>
                     {Aguests.map((Aguest) => (
                       <option value={Aguest}>{Aguest}</option>
                     ))}
@@ -160,9 +165,22 @@ function HotelBooking() {
                     aria-label="Default select example"
                     onChange={(e) => setCguestOps(Number(e.target.value))}
                   >
-                    <option>Select kids tickets</option>
+                    <option>Select child guests</option>
                     {Cguests.map((Cguest) => (
                       <option value={Cguest}>{Cguest}</option>
+                    ))}
+                  </Form.Select>
+
+                  <br/>
+
+                  <Form.Select
+                    className=""
+                    aria-label="Default select example"
+                    onChange={(e) => SetRoomOps(e.target.value)}
+                  >
+                    <option>Select Room Type</option>
+                    {Rooms.map((Room) => (
+                      <option value={Room}>{Room}</option>
                     ))}
                   </Form.Select>
 
